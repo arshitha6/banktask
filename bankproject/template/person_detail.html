@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<!-- <style>
+    a{
+        text-decoration: none;
+        color: white;
+    }
+    a:hover{
+        color: white;
+    }
+</style> -->
+ <div class="container">
+    <h1 class="mt-3 text-uppercase">Personal Details</h1>
+    <div class="col-md-6 mt-4">
+        <form method="post" id="personForm" data-branches-url="{% url 'ajax_load_branches' %}">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button style="background-color: #b3cccc; border-color:white;"><a href="{% url 'pop_up' %}" style="color:blue;">Submit</a></button>
+                     <button style="background-color: #b3cccc; border-color:white;"><a href="{% url 'logout' %}" style="color:blue;">Logout</a></button>
+        </form> <br>
+    </div>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $("#id_district").change(function () {
+        var url = $("#personForm").attr("data-branches-url");  // get the url of the `load_cities` view
+        var districtId = $(this).val();  // get the selected country ID from the HTML input
+
+        $.ajax({                       // initialize an AJAX request
+            url: url,                    // set the url of the request (= /persons/ajax/load-cities/ )
+            data: {
+                'district': districtId       // add the country id to the GET parameters
+            },
+            success: function (data) {   // `data` is the return of the `load_cities` view function
+                $("#id_branch").html(data);  // replace the contents of the city input with the data that came from the server
+                      }
+        });
+
+    });
+</script>
+{% endblock %}

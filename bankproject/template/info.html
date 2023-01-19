@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<style>
+    button.one{
+        width: 20%;
+        border-radius: 1em;
+        border: 1px solid gray;
+    }
+    a{
+        text-decoration: none;
+        color: white;
+    }
+    a:hover{
+        color:white;
+    }
+</style>
+<div class="container">
+    <div class="col-md-6 mt-5">
+        <h1>Press The Button Below To Enter Personal Details</h1>
+        <button class="btn btn-dark one"><a href="{% url 'person' %}">Click Here!</a></button>
+    </div>
+</div>
+
+{% endblock %}

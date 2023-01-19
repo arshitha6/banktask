@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<style>
+    input.one{
+        width: 70%;
+        margin-bottom: 1em;
+        padding: .6em;
+        border-radius: 1em;
+        border: 1px solid gray;
+    }
+    input.two{
+        border-radius: 1em;
+        padding: .2em;
+        width: 20%;
+        border:1px solid gray;
+        margin-bottom: 1em;
+    }
+    a.link{
+        text-decoration: none;
+        color: black;
+        text-transform: uppercase;
+        font-size: .9em;
+        margin-left: .3em;
+    }
+    p{
+        text-transform: uppercase;
+    }
+    .btn-one{
+        border-radius: 1em;
+        padding: .2em;
+        width: 20%;
+        border:1px solid gray;
+        margin-bottom: 1em;
+    }
+</style>
+<div class="container">
+    <div class="col-md-6 mt-5">
+        <form method="post">
+            {% csrf_token %}
+            <input class="one" type="text" name="username" placeholder="Username"> <br>
+            <input class="one" type="password" name="password" placeholder="Password"> <br>
+            <input class="two" type="submit" value="Login">
+        </form>
+        <p>Not a customer ?<span> <button class="btn-one"><a class="link" href="{% url 'register' %}">Register</a></button></span></p>
+        {% for msg in messages%}
+        <h4>{{msg}}</h4>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

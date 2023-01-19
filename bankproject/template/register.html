@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<style>
+    input.one{
+        width: 70%;
+        margin-bottom: 1em;
+        padding: .6em;
+        border-radius: 1em;
+        border: 1px solid gray;
+    }
+    input.two{
+        border-radius: 1em;
+        padding: .2em;
+        width: 20%;
+        border:1px solid gray;
+        margin-bottom: 1em;
+    }
+    a{
+        text-decoration: none;
+    }
+
+</style>
+<form method="post">
+    <div class="container">
+        <div class="col-md-6 mt-5">
+            {% csrf_token %}
+              {{ form.as_p }}
+            <input class="two" type="submit" value="Register">
+            <p>Already have an account?<span><a href="{% url 'login' %}"> Login</a></span></p>
+        </div>
+    </div>
+</form>
+{% endblock %}

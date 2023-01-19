@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<style>
+    a{
+        text-decoration: none;
+        color: white;
+    }
+    h4{
+        font-size: 1.8em;
+    }
+    p{
+        font-size: .9em;
+    }
+</style>
+<div class="container">
+    <div class="col-md-6 mt-5">
+        <h1 class="display-1 text-uppercase">IDEAL BANK</h1>
+        <h2>For better Future</h2>
+        <h4>Banking partner for all your needs</h4>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut officiis fugiat maiores quae placeat fugit quod at minima molestiae quibusdam doloremque repellat accusantium ad voluptatem non necessitatibus sequi asperiores iste, natus nisi labore eaque? Est nam omnis soluta amet possimus, veritatis maxime non unde praesentium dolorum porro architecto, eos ab fugiat ad quod officiis dolor ex laboriosam animi? Nesciunt laudantium sint alias eius possimus nostrum quis delectus incidunt molestias quo? Molestiae nostrum enim dolorum labore ut accusamus sunt odit dolorem!</p>
+        {% if not user.is_authenticated %}
+        <button class="btn btn-dark"><a href="{% url 'login' %}">Login</a></button>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
